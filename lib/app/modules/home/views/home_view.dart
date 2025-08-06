@@ -1,4 +1,9 @@
+import 'style.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import '../../../routes/app_pages.dart';
+import 'package:flutter/cupertino.dart';
+import '../controllers/home_controller.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -7,10 +12,83 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _height = MediaQuery.of(context).size.height;
-    final _width = MediaQuery.of(context).size.width;
-
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+    final HomeController controller = Get.put(HomeController());
     return Scaffold(
+      floatingActionButton: buttonStyle(height, width),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: CupertinoColors.transparent,
+        shape: CircularNotchedRectangle(),
+        notchMargin: 8.0,
+        child: SizedBox(
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Obx(
+                () => IconButton(
+                  icon: Icon(Icons.home, size: 40),
+                  color: controller.selectedIndex.value == 0
+                      ? Color(0xFF549994)
+                      : Color(0xFFAAAAAA),
+                  onPressed: () {
+                    if (Get.currentRoute != Routes.HOME) {
+                      controller.onItemTapped(0);
+                      Get.offAllNamed(Routes.HOME);
+                    }
+                  },
+                ),
+              ),
+              Obx(
+                () => IconButton(
+                  icon: Icon(Icons.analytics_outlined, size: 40),
+                  color: controller.selectedIndex.value == 1
+                      ? Color(0xFF549994)
+                      : Color(0xFFAAAAAA),
+                  onPressed: () {
+                    if (Get.currentRoute != Routes.ANALYTICS) {
+                      controller.onItemTapped(1);
+                      Get.offAllNamed(Routes.ANALYTICS);
+                    }
+                  },
+                ),
+              ),
+              SizedBox(width: 40), // Space for FAB
+              Obx(
+                () => IconButton(
+                  icon: Icon(Icons.wallet_rounded, size: 40),
+                  color: controller.selectedIndex.value == 3
+                      ? Color(0xFF549994)
+                      : Color(0xFFAAAAAA),
+                  onPressed: () {
+                    if (Get.currentRoute != Routes.ADD_EXPENSE) {
+                      controller.onItemTapped(3);
+                      Get.offAllNamed(Routes.ADD_EXPENSE);
+                    }
+                  },
+                ),
+              ),
+              Obx(
+                () => IconButton(
+                  icon: Icon(Icons.person_outline, size: 40),
+                  color: controller.selectedIndex.value == 4
+                      ? Color(0xFF549994)
+                      : Color(0xFFAAAAAA),
+                  onPressed: () {
+                    if (Get.currentRoute != Routes.PROFILE) {
+                      controller.onItemTapped(4);
+                      Get.offAllNamed(Routes.PROFILE);
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+
       body: SafeArea(
         child: Column(
           children: [
@@ -22,8 +100,8 @@ class HomeView extends StatelessWidget {
                     scale: 2,
                     child: ClipOval(
                       child: Container(
-                        height: _height * 0.27,
-                        width: _width,
+                        height: height * 0.27,
+                        width: width,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -42,7 +120,7 @@ class HomeView extends StatelessWidget {
                   padding: EdgeInsets.all(20),
                   child: Column(
                     children: [
-                      SizedBox(height: _height * 0.05),
+                      SizedBox(height: height * 0.05),
                       Row(
                         children: [
                           Column(
@@ -89,10 +167,10 @@ class HomeView extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: _height * 0.05),
+                      SizedBox(height: height * 0.05),
                       Container(
-                        height: _height * 0.22,
-                        width: _width,
+                        height: height * 0.22,
+                        width: width,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
@@ -259,10 +337,10 @@ class HomeView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: _height * 0.03),
+                      SizedBox(height: height * 0.03),
                       Container(
-                        height: _height * 0.09,
-                        width: _width,
+                        height: height * 0.09,
+                        width: width,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
@@ -295,7 +373,10 @@ class HomeView extends StatelessWidget {
                                 percent: 0.60,
                                 center: Text(
                                   "60%",
-                                  style: TextStyle(fontSize: 10),
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.white,
+                                  ),
                                 ),
                                 progressColor: const Color.fromARGB(
                                   255,
@@ -323,6 +404,170 @@ class HomeView extends StatelessWidget {
                           ),
                         ),
                       ),
+                      SizedBox(height: height * 0.03),
+                      Row(
+                        children: [
+                          Text(
+                            'Transactions History',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Spacer(),
+                          Text(
+                            'see all',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Color(0xFFAAAAAA),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: height * 0.02),
+                      //স্কুলের বেতন
+                      Row(
+                        children: [
+                          BlurryContainer(
+                            borderRadius: BorderRadius.circular(5),
+                            height: height * 0.06,
+                            width: width * 0.1,
+                            blur: 5,
+                            elevation: 10,
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            child: Icon(
+                              Icons.school_outlined,
+                              color: const Color.fromARGB(255, 0, 0, 0),
+                              size: 30,
+                            ),
+                          ),
+                          SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'স্কুলের বেতন',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'AnekBangla',
+                                ),
+                              ),
+                              Text(
+                                'Today',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: 'AnekBangla',
+                                  color: Color.fromARGB(255, 108, 108, 108),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Spacer(),
+                          Text(
+                            '-৳3,000',
+                            style: TextStyle(
+                              color: Colors.redAccent,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: height * 0.02),
+                      //কাচা বাজার
+                      Row(
+                        children: [
+                          BlurryContainer(
+                            borderRadius: BorderRadius.circular(5),
+                            height: height * 0.06,
+                            width: width * 0.1,
+                            blur: 5,
+                            elevation: 10,
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            child: Icon(
+                              Icons.shopping_bag_outlined,
+                              color: const Color.fromARGB(255, 0, 0, 0),
+                              size: 30,
+                            ),
+                          ),
+                          SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'কাচা বাজার',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'AnekBangla',
+                                ),
+                              ),
+                              Text(
+                                'Yesterday',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: 'AnekBangla',
+                                  color: Color.fromARGB(255, 108, 108, 108),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Spacer(),
+                          Text(
+                            '-৳8,000',
+                            style: TextStyle(
+                              color: Colors.redAccent,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: height * 0.02),
+                      //স্যালারি
+                      Row(
+                        children: [
+                          BlurryContainer(
+                            borderRadius: BorderRadius.circular(5),
+                            height: height * 0.06,
+                            width: width * 0.1,
+                            blur: 5,
+                            elevation: 10,
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            child: Icon(
+                              Icons.currency_exchange_outlined,
+                              color: const Color.fromARGB(255, 0, 0, 0),
+                              size: 30,
+                            ),
+                          ),
+                          SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'স্যালারি',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontFamily: 'AnekBangla',
+                                ),
+                              ),
+                              Text(
+                                'Jan 30, 2022',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: 'AnekBangla',
+                                  color: Color.fromARGB(255, 108, 108, 108),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Spacer(),
+                          Text(
+                            '+৳50,000',
+                            style: TextStyle(
+                              color: const Color.fromARGB(255, 32, 166, 95),
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -330,25 +575,6 @@ class HomeView extends StatelessWidget {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        items: [
-          BottomNavigationBarItem(label: 'home', icon: Icon(Icons.home)),
-          BottomNavigationBarItem(
-            label: 'analytics',
-            icon: Icon(Icons.analytics_outlined),
-          ),
-          BottomNavigationBarItem(label: 'add', icon: Icon(Icons.add)),
-          BottomNavigationBarItem(
-            label: 'wallet',
-            icon: Icon(Icons.wallet_rounded),
-          ),
-          BottomNavigationBarItem(
-            label: 'profile',
-            icon: Icon(Icons.person_2_outlined),
-          ),
-        ],
       ),
     );
   }
