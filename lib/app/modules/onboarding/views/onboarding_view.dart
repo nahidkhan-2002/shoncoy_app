@@ -64,7 +64,7 @@ class OnboardingView extends GetView<OnboardingController> {
                       color: Color(0xFFB3261E),
                     ),
                   ),
-                  SizedBox(height: screenHeight * 0.03),
+                  SizedBox(height: screenHeight * 0.01),
                   Text(
                     "আজকের সঞ্চয়,\nআগামীদিনের আশ্রয়",
                     textAlign: TextAlign.center,
@@ -76,7 +76,7 @@ class OnboardingView extends GetView<OnboardingController> {
                       color: Color(0xFF3E7C78),
                     ),
                   ),
-                  SizedBox(height: screenHeight * 0.02),
+                  SizedBox(height: screenHeight * 0.01),
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(

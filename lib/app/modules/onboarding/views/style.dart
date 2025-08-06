@@ -5,8 +5,8 @@ class DiagonalClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path path = Path();
 
-    path.lineTo(0, size.height - 40); // bottom-left
-    path.lineTo(size.width, size.height); // bottom-right (diagonal)
+    path.lineTo(0, size.height - 60); // bottom-left
+    path.lineTo(size.width, size.height - 20); // bottom-right (diagonal)
     path.lineTo(size.width, 0); // top-right
     path.close();
 
@@ -64,7 +64,6 @@ Widget threeWhiteRings(double screenHeight, double screenWidth) => Center(
     ),
   ),
 );
-
 
 Ink inkstyle = Ink(
   decoration: BoxDecoration(
