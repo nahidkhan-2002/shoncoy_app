@@ -1,26 +1,24 @@
 import 'package:get/get.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import '../controllers/onboarding_controller.dart';
+import 'package:flutter/services.dart';
+import 'package:shoncoy_app/app/routes/app_pages.dart';
 import 'package:shoncoy_app/app/modules/onboarding/views/style.dart';
 
-//color paletes for button => 3E7C78 shadow => 3F8782
-
-class OnboardingView extends GetView<OnboardingController> {
+class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
         statusBarColor: Color(0xFF3E7C78),
         statusBarIconBrightness: Brightness.light,
-        //statusBarIconBrightness: Brightness.dark,
       ),
     );
 
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Column(
         children: [
@@ -32,7 +30,6 @@ class OnboardingView extends GetView<OnboardingController> {
                 SizedBox(
                   height: screenHeight * 0.6,
                   width: double.infinity,
-                  //color: Color(0xFF3E7C78),
                   child: Transform.scale(
                     scale: 1.1,
                     child: Image.asset(
@@ -52,10 +49,9 @@ class OnboardingView extends GetView<OnboardingController> {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 6, right: 16, left: 16),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'সঞ্চয়',
                     style: TextStyle(
                       fontSize: 48,
@@ -65,7 +61,7 @@ class OnboardingView extends GetView<OnboardingController> {
                     ),
                   ),
                   SizedBox(height: screenHeight * 0.01),
-                  Text(
+                  const Text(
                     "আজকের সঞ্চয়,\nআগামীদিনের আশ্রয়",
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -76,22 +72,20 @@ class OnboardingView extends GetView<OnboardingController> {
                       color: Color(0xFF3E7C78),
                     ),
                   ),
-                  SizedBox(height: screenHeight * 0.01),
+                  SizedBox(height: screenHeight * 0.02),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.offAllNamed(Routes.HOME);
+                    },
                     style: ElevatedButton.styleFrom(
-                      padding:
-                          EdgeInsets.zero, // Must be zero for full Ink control
-
+                      padding: EdgeInsets.zero,
                       fixedSize: Size(screenWidth * 0.9, screenHeight * 0.07),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
                       elevation: 10,
-                      backgroundColor:
-                          Colors.transparent, // Background via gradient now
+                      backgroundColor: Colors.transparent,
                       shadowColor: const Color(0xFF3F8782),
-                      enableFeedback: true,
                     ),
                     child: inkstyle,
                   ),
@@ -99,13 +93,18 @@ class OnboardingView extends GetView<OnboardingController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Already Have Account?",
                         style: TextStyle(fontSize: 14),
                       ),
                       TextButton(
-                        onPressed: () {},
-                        child: Text('Log In', style: TextStyle(fontSize: 14)),
+                        onPressed: () {
+                          // Login screen logic here
+                        },
+                        child: const Text(
+                          'Log In',
+                          style: TextStyle(fontSize: 14),
+                        ),
                       ),
                     ],
                   ),
