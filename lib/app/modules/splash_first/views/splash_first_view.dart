@@ -9,10 +9,11 @@ class SplashFirstView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 2), () {
-      Get.offAllNamed(Routes.ONBOARDING);
+      Get.toNamed(Routes.ONBOARDING);
     });
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: LottieBuilder.asset(
           'lottie_anime/loading colour.json',

@@ -33,8 +33,8 @@ class ProfileView extends GetView<ProfileController> {
                       : Color(0xFFAAAAAA),
                   onPressed: () {
                     if (Get.currentRoute != Routes.HOME) {
-                       controller.onItemTapped(0);
-                      Get.offAllNamed(Routes.HOME);
+                      controller.onItemTapped(0);
+                      Get.toNamed(Routes.HOME);
                     }
                   },
                 ),
@@ -46,10 +46,9 @@ class ProfileView extends GetView<ProfileController> {
                       ? Color(0xFF549994)
                       : Color(0xFFAAAAAA),
                   onPressed: () {
-                    controller.onItemTapped(1);
                     if (Get.currentRoute != Routes.ANALYTICS) {
-                       controller.onItemTapped(0);
-                      Get.offAllNamed(Routes.ANALYTICS);
+                      controller.onItemTapped(1);
+                      Get.toNamed(Routes.ANALYTICS);
                     }
                   },
                 ),
@@ -62,10 +61,9 @@ class ProfileView extends GetView<ProfileController> {
                       ? Color(0xFF549994)
                       : Color(0xFFAAAAAA),
                   onPressed: () {
-                    controller.onItemTapped(3);
                     if (Get.currentRoute != Routes.ADD_EXPENSE) {
-                       controller.onItemTapped(0);
-                      Get.offAllNamed(Routes.ADD_EXPENSE);
+                      controller.onItemTapped(3);
+                      Get.toNamed(Routes.ADD_EXPENSE);
                     }
                   },
                 ),
@@ -77,10 +75,9 @@ class ProfileView extends GetView<ProfileController> {
                       ? Color(0xFF549994)
                       : Color(0xFFAAAAAA),
                   onPressed: () {
-                    controller.onItemTapped(4);
                     if (Get.currentRoute != Routes.PROFILE) {
-                       controller.onItemTapped(0);
-                      Get.offAllNamed(Routes.PROFILE);
+                      controller.onItemTapped(4);
+                      Get.toNamed(Routes.PROFILE);
                     }
                   },
                 ),

@@ -34,7 +34,7 @@ class AddExpenseView extends GetView<AddExpenseController> {
                   onPressed: () {
                     if (Get.currentRoute != Routes.HOME) {
                       controller.onItemTapped(0);
-                      Get.offAllNamed(Routes.HOME);
+                      Get.toNamed(Routes.HOME);
                       
                     }
                   },
@@ -49,7 +49,7 @@ class AddExpenseView extends GetView<AddExpenseController> {
                   onPressed: () {
                     if (Get.currentRoute != Routes.ANALYTICS) {
                          controller.onItemTapped(1);
-                      Get.offAllNamed(Routes.ANALYTICS);
+                      Get.toNamed(Routes.ANALYTICS);
                    
                     }
                   },
@@ -64,8 +64,9 @@ class AddExpenseView extends GetView<AddExpenseController> {
                       : Color(0xFFAAAAAA),
                   onPressed: () {
                     if (Get.currentRoute != Routes.ADD_EXPENSE) {
+                       
                       controller.onItemTapped(3);
-                      Get.offAllNamed(Routes.ADD_EXPENSE);
+                      Get.toNamed(Routes.ADD_EXPENSE);
                       
                     }
                   },
@@ -79,8 +80,9 @@ class AddExpenseView extends GetView<AddExpenseController> {
                       : Color(0xFFAAAAAA),
                   onPressed: () {
                     if (Get.currentRoute != Routes.PROFILE) {
+                       
                       controller.onItemTapped(4);
-                      Get.offAllNamed(Routes.PROFILE);
+                      Get.toNamed(Routes.PROFILE);
                       
                     }
                   },

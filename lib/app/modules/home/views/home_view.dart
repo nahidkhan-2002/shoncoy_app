@@ -16,6 +16,7 @@ class HomeView extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final HomeController controller = Get.put(HomeController());
     return Scaffold(
+      backgroundColor: Colors.white,
       floatingActionButton: buttonStyle(height, width),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
@@ -36,7 +37,7 @@ class HomeView extends StatelessWidget {
                   onPressed: () {
                     if (Get.currentRoute != Routes.HOME) {
                       controller.onItemTapped(0);
-                      Get.offAllNamed(Routes.HOME);
+                      Get.toNamed(Routes.HOME);
                     }
                   },
                 ),
@@ -50,7 +51,7 @@ class HomeView extends StatelessWidget {
                   onPressed: () {
                     if (Get.currentRoute != Routes.ANALYTICS) {
                       controller.onItemTapped(1);
-                      Get.offAllNamed(Routes.ANALYTICS);
+                      Get.toNamed(Routes.ANALYTICS);
                     }
                   },
                 ),
@@ -65,7 +66,7 @@ class HomeView extends StatelessWidget {
                   onPressed: () {
                     if (Get.currentRoute != Routes.ADD_EXPENSE) {
                       controller.onItemTapped(3);
-                      Get.offAllNamed(Routes.ADD_EXPENSE);
+                      Get.toNamed(Routes.ADD_EXPENSE);
                     }
                   },
                 ),
@@ -79,7 +80,7 @@ class HomeView extends StatelessWidget {
                   onPressed: () {
                     if (Get.currentRoute != Routes.PROFILE) {
                       controller.onItemTapped(4);
-                      Get.offAllNamed(Routes.PROFILE);
+                      Get.toNamed(Routes.PROFILE);
                     }
                   },
                 ),
@@ -88,7 +89,6 @@ class HomeView extends StatelessWidget {
           ),
         ),
       ),
-
       body: SafeArea(
         child: Column(
           children: [
@@ -116,6 +116,7 @@ class HomeView extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 Padding(
                   padding: EdgeInsets.all(20),
                   child: Column(
@@ -431,7 +432,7 @@ class HomeView extends StatelessWidget {
                           BlurryContainer(
                             borderRadius: BorderRadius.circular(5),
                             height: height * 0.06,
-                            width: width * 0.1,
+                            width: width * 0.15,
                             blur: 5,
                             elevation: 10,
                             color: const Color.fromARGB(255, 255, 255, 255),
@@ -479,7 +480,7 @@ class HomeView extends StatelessWidget {
                           BlurryContainer(
                             borderRadius: BorderRadius.circular(5),
                             height: height * 0.06,
-                            width: width * 0.1,
+                            width: width * 0.15,
                             blur: 5,
                             elevation: 10,
                             color: const Color.fromARGB(255, 255, 255, 255),
@@ -527,7 +528,7 @@ class HomeView extends StatelessWidget {
                           BlurryContainer(
                             borderRadius: BorderRadius.circular(5),
                             height: height * 0.06,
-                            width: width * 0.1,
+                            width: width * 0.15,
                             blur: 5,
                             elevation: 10,
                             color: const Color.fromARGB(255, 255, 255, 255),
