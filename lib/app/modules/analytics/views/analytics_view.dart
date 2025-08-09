@@ -299,14 +299,11 @@ class AnalyticsView extends GetView<AnalyticsController> {
               Row(
                 children: [
                   Text(
-                    'Transactions History',
+                    'Top Spending',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Spacer(),
-                  Text(
-                    'see all',
-                    style: TextStyle(fontSize: 14, color: Color(0xFFAAAAAA)),
-                  ),
+                  Icon(Icons.import_export_rounded),
                 ],
               ),
 
@@ -357,48 +354,64 @@ class AnalyticsView extends GetView<AnalyticsController> {
               ),
               SizedBox(height: height * 0.02),
               //কাচা বাজার
-              Row(
-                children: [
-                  BlurryContainer(
-                    borderRadius: BorderRadius.circular(5),
-                    height: height * 0.06,
-                    width: width * 0.15,
-                    blur: 5,
-                    elevation: 10,
-                    color: const Color.fromARGB(255, 255, 255, 255),
-                    child: Icon(
-                      Icons.shopping_bag_outlined,
-                      color: const Color.fromARGB(255, 0, 0, 0),
-                      size: 30,
-                    ),
-                  ),
-                  SizedBox(width: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              BlurryContainer(
+                shadowColor: Color.fromARGB(151, 0, 0, 0),
+                height: height * 0.1,
+                width: width,
+                blur: 10,
+                borderRadius: BorderRadius.circular(9),
+                elevation: 10,
+                color: Color.fromARGB(157, 41, 132, 126),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
                     children: [
-                      Text(
-                        'কাচা বাজার',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'AnekBangla',
+                      BlurryContainer(
+                        borderRadius: BorderRadius.circular(5),
+                        height: height * 0.06,
+                        width: width * 0.15,
+                        blur: 10,
+                        elevation: 5,
+                        color: const Color.fromARGB(62, 255, 255, 255),
+                        child: Icon(
+                          Icons.shopping_bag_outlined,
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                          size: 30,
                         ),
                       ),
+                      SizedBox(width: 20),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'কাচা বাজার',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontFamily: 'AnekBangla',
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            'Yesterday',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'AnekBangla',
+                              color: Color.fromARGB(255, 255, 255, 255),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Spacer(),
                       Text(
-                        'Yesterday',
+                        '-৳8,000',
                         style: TextStyle(
-                          fontSize: 15,
-                          fontFamily: 'AnekBangla',
-                          color: Color.fromARGB(255, 108, 108, 108),
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 18,
                         ),
                       ),
                     ],
                   ),
-                  Spacer(),
-                  Text(
-                    '-৳8,000',
-                    style: TextStyle(color: Colors.redAccent, fontSize: 18),
-                  ),
-                ],
+                ),
               ),
               SizedBox(height: height * 0.02),
               //স্যালারি
