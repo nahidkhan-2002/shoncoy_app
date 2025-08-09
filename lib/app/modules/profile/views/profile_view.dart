@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import '../../home/views/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../../../routes/app_pages.dart';
@@ -15,12 +14,9 @@ class ProfileView extends GetView<ProfileController> {
     final width = MediaQuery.of(context).size.width;
     final HomeController controller = Get.put(HomeController());
     return Scaffold(
-      floatingActionButton: buttonStyle(height, width),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         color: CupertinoColors.transparent,
-        shape: CircularNotchedRectangle(),
-        notchMargin: 8.0,
+
         child: SizedBox(
           height: 60,
           child: Row(
@@ -54,7 +50,6 @@ class ProfileView extends GetView<ProfileController> {
                   },
                 ),
               ),
-              SizedBox(width: 40), // Space for FAB
               Obx(
                 () => IconButton(
                   icon: Icon(Icons.wallet_rounded, size: 40),
@@ -123,7 +118,7 @@ class ProfileView extends GetView<ProfileController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(height: height * 0.02),
+                      SizedBox(height: height * 0.01),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
 
@@ -166,7 +161,7 @@ class ProfileView extends GetView<ProfileController> {
                           ),
                         ],
                       ),
-                      SizedBox(height: height * 0.16),
+                      SizedBox(height: height * 0.13),
                       ClipOval(
                         child: BlurryContainer(
                           height: height * 0.13,
@@ -182,7 +177,7 @@ class ProfileView extends GetView<ProfileController> {
                           ),
                         ),
                       ),
-                      SizedBox(height: height * 0.015),
+                      SizedBox(height: height * 0.017),
                       Text(
                         'মোঃ আব্দুর রহমান',
                         style: TextStyle(

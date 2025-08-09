@@ -32,12 +32,8 @@ class AnalyticsView extends GetView<AnalyticsController> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      floatingActionButton: buttonStyle(height, width),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         color: CupertinoColors.transparent,
-        shape: CircularNotchedRectangle(),
-        notchMargin: 8.0,
         child: SizedBox(
           height: 60,
           child: Row(
@@ -71,7 +67,6 @@ class AnalyticsView extends GetView<AnalyticsController> {
                   },
                 ),
               ),
-              SizedBox(width: 40), // Space for FAB
               Obx(
                 () => IconButton(
                   icon: Icon(Icons.wallet_rounded, size: 40),

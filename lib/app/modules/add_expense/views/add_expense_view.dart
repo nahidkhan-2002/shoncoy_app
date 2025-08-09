@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import '../../home/views/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../../../routes/app_pages.dart';
@@ -17,8 +16,6 @@ class AddExpenseView extends GetView<AddExpenseController> {
     final width = MediaQuery.of(context).size.width;
     final HomeController controller = Get.put(HomeController());
     return Scaffold(
-      floatingActionButton: buttonStyle(height, width),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         color: CupertinoColors.transparent,
         shape: CircularNotchedRectangle(),
@@ -56,7 +53,6 @@ class AddExpenseView extends GetView<AddExpenseController> {
                   },
                 ),
               ),
-              SizedBox(width: 40), // Space for FAB
               Obx(
                 () => IconButton(
                   icon: Icon(Icons.wallet_rounded, size: 40),
